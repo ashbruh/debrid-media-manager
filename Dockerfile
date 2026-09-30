@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y curl grep && rm -rf /var/lib/apt/lists/
 EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
-CMD ["node", "server.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node server.js"]
 
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=1s --start-period=3s --retries=1 \
